@@ -2,7 +2,7 @@
 
 import Button from "../Button";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+// import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 import { fetchProducts } from "@/utils/supabase/actions";
@@ -121,7 +121,7 @@ const Products = () => {
         {products.length > 0 &&
           products.map((product) => (
             <div
-              id={product.id}
+              key={product.id}
               className="card-one group relative mx-auto w-[90%] md:max-w-72 box-shadow px-8 py-4 bg-white/5 backdrop-blur overflow-hidden"
             >
               <h2 className="text-xl">
