@@ -3,7 +3,6 @@ import { Center, useGLTF, ContactShadows } from "@react-three/drei";
 import { forwardRef, useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import type { GLTF } from "three-stdlib";
 
 type RollerProps = {
   src?: string;
@@ -13,6 +12,16 @@ type RollerProps = {
   speed?: number;
 };
 
+
+type StandardLikeMaterial = THREE.Material & {
+  map?: THREE.Texture | null;
+  emissiveMap?: THREE.Texture | null;
+  roughnessMap?: THREE.Texture | null;
+  metalnessMap?: THREE.Texture | null;
+  normalMap?: THREE.Texture | null;
+  metalness?: number;
+};
+
 const Roller = forwardRef<THREE.Group, RollerProps>(function Roller(
   {
     src = "/models/70s_-_80s_roller_skate/greenroller.gltf",
@@ -20,10 +29,11 @@ const Roller = forwardRef<THREE.Group, RollerProps>(function Roller(
     rotation = [0, 0, 0],
     light = true,
     speed = 0,
-  }: RollerProps,
+  },
   ref
 ) {
-  const { scene } = useGLTF<string>(src);
+
+  const { scene } = useGLTF(src);
   const group = useRef<THREE.Group>(null);
 
   useEffect(() => {
@@ -33,22 +43,21 @@ const Roller = forwardRef<THREE.Group, RollerProps>(function Roller(
         m.castShadow = true;
         m.receiveShadow = true;
 
-        const apply = (mat: any) => {
-          if (mat.map) mat.map.colorSpace = THREE.SRGBColorSpace; // baseColor
-          if (mat.emissiveMap)
-            mat.emissiveMap.colorSpace = THREE.SRGBColorSpace;
-          if (mat.roughnessMap)
-            mat.roughnessMap.colorSpace = THREE.LinearSRGBColorSpace;
-          if (mat.metalnessMap)
-            mat.metalnessMap.colorSpace = THREE.LinearSRGBColorSpace;
-          if (mat.normalMap)
-            mat.normalMap.colorSpace = THREE.LinearSRGBColorSpace;
-          // keď je príliš „metal“ bez env, uber:
-          if ("metalness" in mat && mat.metalness > 0.9) mat.metalness = 0.5;
+        const apply = (mat: StandardLikeMaterial) => {
+          if (mat.map) mat.map.colorSpace = THREE.SRGBColorSpace;
+          if (mat.emissiveMap) mat.emissiveMap.colorSpace = THREE.SRGBColorSpace;
+          if (mat.roughnessMap) mat.roughnessMap.colorSpace = THREE.LinearSRGBColorSpace;
+          if (mat.metalnessMap) mat.metalnessMap.colorSpace = THREE.LinearSRGBColorSpace;
+          if (mat.normalMap) mat.normalMap.colorSpace = THREE.LinearSRGBColorSpace;
+          if (typeof mat.metalness === "number" && mat.metalness > 0.9) mat.metalness = 0.5;
         };
-        Array.isArray(m.material)
-          ? m.material.forEach(apply)
-          : apply(m.material);
+
+        // namiesto ternary (kvôli no-unused-expressions)
+        if (Array.isArray(m.material)) {
+          m.material.forEach((mat) => apply(mat as StandardLikeMaterial));
+        } else if (m.material) {
+          apply(m.material as StandardLikeMaterial);
+        }
       }
     });
   }, [scene]);
@@ -63,8 +72,7 @@ const Roller = forwardRef<THREE.Group, RollerProps>(function Roller(
         ref={(node) => {
           group.current = node ?? null;
           if (typeof ref === "function") ref(node);
-          else if (ref)
-            (ref as React.RefObject<THREE.Group | null>).current = node;
+          else if (ref) (ref as React.RefObject<THREE.Group | null>).current = node;
         }}
         dispose={null}
         scale={scale}
@@ -72,20 +80,8 @@ const Roller = forwardRef<THREE.Group, RollerProps>(function Roller(
       >
         {light && (
           <>
-            <spotLight
-              position={[0, 0, 2]}
-              intensity={50}
-              distance={50}
-              color="#6F1D86"
-              castShadow
-            />
-            <spotLight
-              position={[10, 0, 0]}
-              intensity={50}
-              distance={50}
-              color="#6F1D86"
-              castShadow
-            />
+            <spotLight position={[0, 0, 2]} intensity={50} distance={50} color="#6F1D86" castShadow />
+            <spotLight position={[10, 0, 0]} intensity={50} distance={50} color="#6F1D86" castShadow />
           </>
         )}
         <primitive object={scene} />
