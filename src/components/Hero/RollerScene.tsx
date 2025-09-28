@@ -6,7 +6,6 @@ import { Hotspot } from "../Hotspot";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 export default function RollerScene(): JSX.Element {
-  let isVisible = true;
   const isDesktop = useMediaQuery("(min-width: 950px)", false);
   return (
     <div className="absolute inset-0 z-10 flex items-center justify-center">
