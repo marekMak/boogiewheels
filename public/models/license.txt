@@ -1,0 +1,11 @@
+Model Information:
+* title:	Roller DISCO
+* source:	https://sketchfab.com/3d-models/roller-disco-34e4c7095a004ee3acacce59353e2cf7
+* author:	Alicia.Blkd (https://sketchfab.com/Alicia.Blkd)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Roller DISCO" (https://sketchfab.com/3d-models/roller-disco-34e4c7095a004ee3acacce59353e2cf7) by Alicia.Blkd (https://sketchfab.com/Alicia.Blkd) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

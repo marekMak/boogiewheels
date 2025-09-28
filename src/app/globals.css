@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.neon {
+  font-weight: 100;
+  flex-flow: row;
+  color: #00f0ff;
+  text-shadow: 0 0 2rem hotpink;
+  display: inline-block;
+}
+
+.neon-title {
+  text-transform: uppercase;
+  font-weight: 800;
+  line-height: 0.9;
+  color: white;
+  -webkit-text-stroke: 2px #2b8de2;
+  text-shadow: 0 0 4px #2b8de2, 0 0 10px #2b8de2, 0 0 30px #2b8de2,
+    0 0 40px #2b8de2;
+  letter-spacing: 0.02em;
+}
+
+.neon-pinko-title {
+  text-transform: uppercase;
+  font-weight: 800;
+  line-height: 0.9;
+  color: white;
+  -webkit-text-stroke: 2px #ec2cac;
+  text-shadow: 0 0 4px #ec2cac, 0 0 10px #ec2cac, 0 0 30px #ec2cac,
+    0 0 40px #ec2cac;
+  letter-spacing: 0.02em;
+}
+
+.products-title {
+  text-transform: uppercase;
+  font-weight: 800;
+  line-height: 0.9;
+  color: #f8d53f;
+  -webkit-text-stroke: 4px #3b0b50;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bg-disco {
+  background-image: url("/images/bg_1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-products {
+  background-image: url("/images/bg_products.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-founders {
+  background-image: url("/images/bg_founders.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-founders-green {
+  background-image: url("/images/bg_founders_greeno.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-video-section {
+  background-image: url("/images/bg_video.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-team {
+  background-image: url("/images/bg_team.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-footer {
+  background-image: url("/images/bg_footer.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  background-position: center top;
+}
+
+.button-cutout {
+  position: relative;
+  filter: drop-shadow(0 1px 0 #000) drop-shadow(-1px 0 0 #000)
+    drop-shadow(1px 0 0 #000) drop-shadow(0 -1px 0 #000)
+    drop-shadow(8px 8px 0 #000);
+
+  &:hover {
+    filter: drop-shadow(0 1px 0 #000) drop-shadow(-1px 0 0 #000)
+      drop-shadow(1px 0 0 #000) drop-shadow(0 -1px 0 #000)
+      drop-shadow(2px 2px 0 #000);
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: calc(100% - 1px);
+    content: "";
+    background: inherit;
+    width: 1rem;
+    height: 100%;
+    clip-path: polygon(
+      23% 19%,
+      0 0,
+      100% 0,
+      100% 100%,
+      0 100%,
+      29% 79%,
+      9% 80%,
+      0 33%
+    );
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: calc(100% - 1px);
+    content: "";
+    background: inherit;
+    width: 1rem;
+    height: 100%;
+    clip-path: polygon(
+      100% 0,
+      74% 28%,
+      100% 29%,
+      100% 70%,
+      84% 78%,
+      100% 100%,
+      0 100%,
+      0 0
+    );
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1);
+}
