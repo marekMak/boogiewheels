@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <section className="w-full min-h-80 py-10 flex items-center bg-footer">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
