@@ -1,9 +1,7 @@
 import Marie from "./Founders/Marie";
 import Emilie from "./Founders/Emilie";
 
-type Props = {};
-
-const Founders = (props: Props) => {
+const Founders = () => {
   return (
     <>
       <Marie />
