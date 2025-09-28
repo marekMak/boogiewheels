@@ -1,6 +1,4 @@
-type Props = {};
-
-const VideoSection = (props: Props) => {
+const VideoSection = () => {
   return (
     <section className="h-screen w-full relative bg-video-section p-10 md:py-20 md:px-32 flex justify-center items-center">
       <div className="w-full h-full  md:max-w-[60vw] relative">
