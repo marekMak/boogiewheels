@@ -2,9 +2,7 @@ import BasicLayout from "@/components/layouts/BasicLayout";
 import Logo from "@/components/Logo";
 import Link from "next/link";
 
-type Props = {};
-
-const page = (props: Props) => {
+const page = () => {
   return (
     <BasicLayout>
       <div className="flex flex-col justify-center items-center gap-10">
