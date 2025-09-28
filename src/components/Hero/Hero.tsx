@@ -1,11 +1,8 @@
 "use client";
 import Header from "../Header";
-import Image from "next/image";
 import RollerScene from "./RollerScene";
 
-type Props = {};
-
-const Hero = (props: Props) => {
+const Hero = () => {
   return (
     <main className="relative min-h-[100svh] overflow-hidden bg-disco">
       <Header />
